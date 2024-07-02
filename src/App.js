@@ -2,7 +2,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import "./App.css";
 
 function App() {
-  
+
   const [token, { setItem, removeItem }] = useLocalStorage("Token");
 
   return (
