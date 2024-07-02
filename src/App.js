@@ -1,14 +1,14 @@
-import { useHover } from './useHover';
+import { useViewportSize } from './useViewportSize';
 import "./App.css";
 
 function App() {
 
-  const { hovered, ref } = useHover();
+  const { height, width } = useViewportSize();
 
     return (
-      <div ref={ref}>
-        {hovered ? 'На меня навели мышку' : 'Наведи мышкой на меня'}
-      </div>
+      <>
+      Width: {width}, height: {height}
+    </>
     );
 }
 
