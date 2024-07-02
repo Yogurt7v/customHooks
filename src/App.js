@@ -1,32 +1,15 @@
+import { useHover } from './useHover';
 import "./App.css";
-import { useFetch } from "./useFetch";
 
 function App() {
 
-    const { data, isLoading, error, refetch } = useFetch("https://jsonplaceholder.typicode.com/posts");
+  const { hovered, ref } = useHover();
 
-  return (
-    <div>
-      <div>
-        <button
-          onClick={() =>
-            refetch({
-              params: {
-                _limit: 3,
-              },
-            })
-          }
-        >
-          Перезапросить
-        </button>
+    return (
+      <div ref={ref}>
+        {hovered ? 'На меня навели мышку' : 'Наведи мышкой на меня'}
       </div>
-      {isLoading && "Загрузка..."}
-      {error && `"Произошла ошибка : ${error.message}"`}
-      {data &&
-        !isLoading &&
-        data.map((item) => <div key={item.id}>{item.title}</div>)}
-    </div>
-  );
+    );
 }
 
 export default App;
