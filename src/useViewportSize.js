@@ -17,6 +17,7 @@ export function useViewportSize() {
 
   useEffect(() => {
     window.addEventListener("resize", changeSize());
+    return () => window.removeEventListener("resize", changeSize());
   }, []);
 
   return { height: size.height, width: size.width };
