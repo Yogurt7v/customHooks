@@ -6,18 +6,16 @@ export function useViewportSize() {
     width: window.innerWidth,
   });
 
+  
   function changeSize() {
-    setInterval(() => {
-      setSize({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    }, 500);
+    setSize({
+      height: window.innerHeight,
+      width: window.innerWidth,
+    });
   }
-
   useEffect(() => {
-    window.addEventListener("resize", changeSize());
-    return () => window.removeEventListener("resize", changeSize());
+    window.addEventListener("resize", changeSize);
+    return () => window.removeEventListener("resize", changeSize);
   }, []);
 
   return { height: size.height, width: size.width };
