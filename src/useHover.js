@@ -4,8 +4,18 @@ export function useHover() {
   const [hovered, setHovered] = useState(false);
   const ref = useRef();
 
+
+  console.log("render");
+
   useEffect(() => {
-    ref.current.addEventListener("mouseover", () => setHovered(!hovered));
+    const item = ref.current;
+    item.addEventListener("mouseover", () => setHovered(!hovered));
+    item.addEventListener("mouseout", () => setHovered(!hovered));
+
+    return () => {
+      item.removeEventListener("mouseover",() => setHovered(!hovered));
+      item.removeEventListener("mouseout",() => setHovered(!hovered));
+    }
   }, [hovered]);
 
   return { hovered, ref };
